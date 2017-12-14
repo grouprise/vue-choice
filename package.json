@@ -1,0 +1,70 @@
+{
+  "name": "vue-choice",
+  "version": "0.1.0",
+  "description": "a vue select/choice component that strives for native-select compatibility",
+  "repository": {
+    "url": "https://github.com/stadtgestalten/vue-choice.git",
+    "type": "git"
+  },
+  "main": "dist/vue-choice.common.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepublishOnly": "npm test && npm run build",
+    "test": "test-vue-app",
+    "build": "bili",
+    "example": "poi",
+    "build:example": "poi build"
+  },
+  "author": {
+    "name": "Konrad Mohrfeldt",
+    "email": "konrad.mohrfeldt@farbdev.org"
+  },
+  "license": "MIT",
+  "poi": {
+    "entry": "example/index.js",
+    "dist": "example/dist",
+    "homepage": "./"
+  },
+  "bili": {
+    "format": [
+      "umd",
+      "cjs"
+    ],
+    "plugins": [
+      "vue"
+    ],
+    "vue": {
+      "css": "dist/vue-choice.css"
+    }
+  },
+  "devDependencies": {
+    "bili": "^0.19.0",
+    "poi": "^9.3.10",
+    "rollup-plugin-vue": "^3.0.0",
+    "test-vue-app": "^1.0.0",
+    "vue-test-utils": "^1.0.0-beta.2"
+  },
+  "dependencies": {
+    "throttleit": "^1.0.0",
+    "vue-on-click-outside": "^1.0.3"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "envs": [
+      "browser",
+      "node",
+      "mocha"
+    ],
+    "plugins": [
+      "html"
+    ]
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 4%",
+    "Firefox ESR",
+    "IE 11"
+  ]
+}
