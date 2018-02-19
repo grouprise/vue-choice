@@ -20,8 +20,8 @@
         <i>▼</i>
       </div>
     </div>
-    <transition :name="finderBelow ? 'fade-down' : 'fade-up'">
-      <div class="sg-choice-finder" v-show="showFinder" ref="finder">
+    <transition :name="finderBelow ? 'fade-down' : 'fade-up'" @after-enter="updateFinderPosition">
+      <div class="sg-choice-finder" v-show="showFinder === null ? true : showFinder" ref="finder">
         <div class="sg-choice-search" v-if="filter && choices.length > searchThreshold">
           <label :for="componentId.search" class="sr-only">{{ texts.searchLabel }}</label>
           <input type="search" class="sg-choice-search-input" v-model="currentSearch" ref="search"
@@ -137,7 +137,7 @@
     data () {
       return {
         currentValue: null,
-        showFinder: false,
+        showFinder: null,
         currentSearch: '',
         typedSearch: '',
         typedTimer: null,
@@ -305,6 +305,11 @@
         const inputHeight = current.offsetHeight
         const distanceFromBottom = window.innerHeight - inputBounds.bottom + inputHeight
         this.finderBelow = distanceFromBottom > calendarHeight + 30
+
+        // this is the initial rendering to calculate the correct finder size
+        if (this.showFinder === null) {
+          this.showFinder = false
+        }
       }
     },
     watch: {
