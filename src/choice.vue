@@ -46,7 +46,7 @@
 </template>
 
 <script>
-  import { mixin } from 'vue-on-click-outside'
+  import onClickOutside from 'vue-on-click-outside'
   import throttle from 'throttleit'
 
   let instanceId = 0
@@ -99,7 +99,7 @@
 
   export default {
     name: 'sg-choice',
-    mixins: [mixin],
+    mixins: [onClickOutside.mixin],
     props: {
       id: {
         type: String,
