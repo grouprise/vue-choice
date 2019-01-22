@@ -6,7 +6,7 @@
     "url": "https://github.com/stadtgestalten/vue-choice.git",
     "type": "git"
   },
-  "main": "dist/vue-choice.common.js",
+  "main": "dist/vue-choice.cjs.js",
   "files": [
     "dist"
   ],
