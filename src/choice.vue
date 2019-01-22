@@ -61,6 +61,10 @@
     )
   }
 
+  function isString (obj) {
+    return typeof obj === 'string' || obj instanceof String
+  }
+
   function find (collection, test) {
     for (const item of collection) {
       if (test(item)) {
@@ -81,14 +85,16 @@
   }
 
   function includesText (searchIn, str) {
-    return searchIn.indexOf(str) !== -1
+    return isString(searchIn)
+      ? searchIn.toLowerCase().indexOf(str) !== -1
+      : false
   }
 
   const defaultFilter = (term, choice) => {
     return !term || (
-      includesText(choice.label.toLowerCase(), term) ||
-      includesText(choice.value.toLowerCase(), term) ||
-      includesText(choice.text.toLowerCase(), term)
+      includesText(choice.label, term) ||
+      includesText(choice.value, term) ||
+      includesText(choice.text, term)
     )
   }
 
