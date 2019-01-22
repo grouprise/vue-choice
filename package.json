@@ -36,7 +36,7 @@
       "vue"
     ],
     "vue": {
-      "css": "dist/vue-choice.css"
+      "css": false
     }
   },
   "devDependencies": {
