@@ -63,9 +63,10 @@
     ]
   },
   "browserslist": [
-    "last 2 versions",
-    "> 4%",
+    "last 1 version",
+    "not dead",
+    ">1% in alt-eu",
     "Firefox ESR",
-    "IE 11"
+    "iOS >= 9"
   ]
 }
