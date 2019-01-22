@@ -40,11 +40,12 @@
     }
   },
   "devDependencies": {
-    "bili": "^0.19.0",
-    "poi": "^9.3.10",
-    "rollup-plugin-vue": "^3.0.0",
-    "test-vue-app": "^1.0.0",
-    "vue-test-utils": "^1.0.0-beta.2"
+    "@vue/test-utils": "^1.0.0-beta.28",
+    "bili": "^3.4.2",
+    "less": "^3.9.0",
+    "poi": "^12.4.6",
+    "rollup-plugin-vue": "^4.6.1",
+    "test-vue-app": "^1.0.0"
   },
   "dependencies": {
     "throttleit": "^1.0.0",
