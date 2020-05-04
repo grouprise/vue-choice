@@ -6,50 +6,45 @@
     "url": "https://github.com/stadtgestalten/vue-choice.git",
     "type": "git"
   },
-  "main": "dist/vue-choice.cjs.js",
+  "main": "dist/vue-choice.umd.js",
+  "module": "dist/vue-choice.esm.js",
+  "browser": "dist/vue-choice.cjs.js",
+  "jsdelivr": "dist/vue-choice.umd.js",
+  "unpkg": "dist/vue-choice.umd.s",
   "files": [
     "dist"
   ],
   "scripts": {
     "prepublishOnly": "npm test && npm run build",
-    "test": "test-vue-app",
-    "build": "bili",
-    "example": "poi",
-    "build:example": "poi build"
+    "lint": "eslint src/**/*",
+    "test": "npm run lint",
+    "build": "bili"
   },
   "author": {
     "name": "Konrad Mohrfeldt",
     "email": "konrad.mohrfeldt@farbdev.org"
   },
   "license": "MIT",
-  "poi": {
-    "entry": "example/index.js",
-    "dist": "example/dist",
-    "homepage": "./"
-  },
-  "bili": {
-    "format": [
-      "umd",
-      "cjs"
-    ],
-    "plugins": [
-      "vue"
-    ],
-    "vue": {
-      "css": false
-    }
-  },
   "devDependencies": {
-    "@vue/test-utils": "^1.0.0-beta.28",
-    "bili": "^3.4.2",
-    "less": "^3.9.0",
-    "poi": "^12.4.6",
-    "rollup-plugin-vue": "^4.6.1",
-    "test-vue-app": "^1.0.0"
+    "babel-eslint": "^10.1.0",
+    "bili": "^4.9.4",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "less": "^3.11.1",
+    "rollup-plugin-vue": "^5.1.6",
+    "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
     "throttleit": "^1.0.0",
     "vue-on-click-outside": "^1.0.3"
+  },
+  "peerDependencies": {
+    "vue": "^2.5"
   },
   "standard": {
     "parser": "babel-eslint",
@@ -63,10 +58,9 @@
     ]
   },
   "browserslist": [
-    "last 1 version",
-    "not dead",
-    ">1% in alt-eu",
+    "defaults",
     "Firefox ESR",
-    "iOS >= 9"
+    "> 0.2% in alt-eu",
+    "not dead"
   ]
 }

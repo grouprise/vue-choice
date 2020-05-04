@@ -7,29 +7,32 @@ a vue select/choice component that strives for native-select compatibility
 ## Install
 
 ```bash
+// with npm
+npm install vue-choice
+// with yarn
 yarn add vue-choice
 ```
 
-CDN: [UNPKG](https://unpkg.com/vue-choice/) | [jsDelivr](https://cdn.jsdelivr.net/npm/vue-choice/) (available as `window.SgChoice`)
+CDN: [UNPKG](https://unpkg.com/vue-choice/) | [jsDelivr](https://cdn.jsdelivr.net/npm/vue-choice/) (available as `window.VueChoice`)
 
 ## Usage
 
 ```vue
 <template>
-  <sg-choice></sg-choice>
+  <Choice></Choice>
 </template>
 
 <script>
-import SgChoice from 'vue-choice'
+  import Choice from 'vue-choice'
 
-export default {
-  components: {
-    SgChoice
+  export default {
+    components: {
+      Choice
+    }
   }
-}
 </script>
 ```
 
 ## License
 
-MIT &copy; [Konrad Mohrfeldt](https://github.com/kmohrf)
+MIT © [Konrad Mohrfeldt](https://github.com/kmohrf)
