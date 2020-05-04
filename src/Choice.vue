@@ -55,6 +55,7 @@
         v-show="showFinder === null ? true : showFinder"
         ref="finder"
         class="sg-choice-finder"
+        :style="{ 'max-height': `${maxFinderSize}px` }"
       >
         <div
           v-if="filter && choices.length > searchThreshold"
@@ -222,6 +223,7 @@ export default {
       typedTimer: null,
       size: 0,
       finderSize: 0,
+      maxFinderSize: null,
       resizeListener: null,
       scrollListener: null,
       finderBelow: true
@@ -403,11 +405,26 @@ export default {
         this.finderSize = finder.offsetHeight
       }
 
-      const calendarHeight = this.finderSize || 500
+      const dropdownSize = this.finderSize || 500
       const inputBounds = current.getBoundingClientRect()
-      const inputHeight = current.offsetHeight
-      const distanceFromBottom = window.innerHeight - inputBounds.bottom + inputHeight
-      this.finderBelow = distanceFromBottom > calendarHeight + 30
+      const distanceFromTop = inputBounds.top
+      const distanceFromBottom = window.innerHeight - inputBounds.bottom
+      // if we show the dropdown we don’t want it to sit directly
+      // on the edge of the screen
+      const screenEdgeOffset = 30
+      const optimalDropdownSize = dropdownSize + screenEdgeOffset
+      // the finder should be displayed below if we have enough space there,
+      // on the top if the place below is not sufficient but on top
+      // or where ever there’s more space available
+      if (distanceFromBottom > optimalDropdownSize) {
+        this.finderBelow = true
+      } else if (distanceFromTop > optimalDropdownSize) {
+        this.finderBelow = false
+      } else {
+        this.finderBelow = distanceFromBottom > distanceFromTop
+      }
+      // make sure that the finder does not overflow the screen
+      this.maxFinderSize = Math.max(distanceFromBottom, distanceFromTop) - screenEdgeOffset
 
       // this is the initial rendering to calculate the correct finder size
       if (this.showFinder === null) {
@@ -520,6 +537,8 @@ export default {
     display: flex;
     flex-direction: column;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    overscroll-behavior: contain;
+    overflow-y: auto;
 
     .sg-choice-bottom {
       top: 100%;
