@@ -1,6 +1,6 @@
 {
   "name": "vue-choice",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "a vue select/choice component that strives for native-select compatibility",
   "repository": {
     "url": "https://github.com/stadtgestalten/vue-choice.git",
