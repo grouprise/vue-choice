@@ -13,6 +13,7 @@ module.exports = {
     ]
   },
   plugins: {
+    commonjs: true,
     vue: true
   }
 }
